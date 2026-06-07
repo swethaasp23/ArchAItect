@@ -1,0 +1,57 @@
+<div class="container">
+
+  <h1>AI Architecture Generator</h1>
+
+  <textarea
+    [(ngModel)]="requirement"
+    placeholder="Enter project requirement"
+    rows="5">
+  </textarea>
+
+  <br><br>
+
+  <button (click)="generateArchitecture()">
+    Generate
+  </button>
+
+  <p *ngIf="isLoading">
+    Generating architecture...
+  </p>
+
+  <div *ngIf="architectureResult" class="result">
+
+    <h2>Frontend</h2>
+
+    <pre>
+{{ architectureResult.frontend | json }}
+    </pre>
+
+    <h2>Backend</h2>
+
+    <pre>
+{{ architectureResult.backend | json }}
+    </pre>
+
+    <h2>Database</h2>
+
+    <pre>
+{{ architectureResult.database | json }}
+    </pre>
+
+    <h2>Architecture</h2>
+
+    <p>
+      {{ architectureResult.architecture }}
+    </p>
+
+    <h2>Services</h2>
+
+    <ul>
+      <li *ngFor="let s of architectureResult.services">
+        {{ s }}
+      </li>
+    </ul>
+
+  </div>
+
+</div>
